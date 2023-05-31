@@ -1,0 +1,38 @@
+#!/bin/bash
+
+while true; do
+    echo "Pro ukončení stiskni k"
+    read -p "Zadej SN: " sn
+
+    if [[ "$sn" == "k" ]]; then
+        echo -e "Ukončuji..."
+        exit 0
+    fi
+
+    cd /richard/logs
+
+    if [ -e "$sn" ]; then
+        if [ -e "$sn.bck" ]; then
+            count=1
+            while [ -e "$sn.bck$count" ]; do
+                ((count++))
+            done
+            mv "$sn" "$sn.bck$count"
+            echo "Logy zalohovany jako $sn.bck$count"
+        else
+            mv "$sn" "$sn.bck"
+            echo "Logy zalohovany"
+        fi
+    else
+        echo "Chyba: Soubor '$sn' neexistuje!"
+        continue
+    fi
+done
+
+
+
+
+
+
+
+c
