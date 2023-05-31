@@ -1,0 +1,17 @@
+#!/bin/bash
+
+while true; do
+        echo "pro ukonceni stiskni k:"
+        read -p "Feed bmc ip:" ip
+
+        if [[ "$ip" == "k" ]]; then
+                echo "ukoncuji.."
+                exit 0
+        elif [[ -z "$ip" ]]; then
+                echo "bmc ip empty string"
+        else
+                echo "restartuji"
+                ipmitool -U admin -P admin -I lanplus -H ${ip} power cycle
+                continue
+        fi
+done
