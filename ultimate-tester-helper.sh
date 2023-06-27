@@ -17,7 +17,7 @@ while true; do
     case $choice in
         1)
             echo -e "Running repair boostrap noSFCS"
-            cd /opt/TE/Amber/mfg
+            cd /opt/logs
             while true; do
                 echo "Zadej 'k' pro ukonceni"
                 read -p "zadej SN: " sn
